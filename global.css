@@ -26,7 +26,9 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 0;
-        }
+    }
+            .hamburger:hover {transform: translateY(-2px); filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));}
+            .hamburger:active {transform: translateY(0px) scale(0.95);}
 
         .hamburger .line {
             width: 100%;
@@ -35,15 +37,19 @@
             border-radius: 2px;
         }
 
+        .myprofile {cursor: pointer}
+            .myprofile:hover {transform: translateY(-2px);filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));}
+            .myprofile:active {transform: translateY(0px) scale(0.95);}
+
 .footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 15px 30px;
     background-color: #ffffff;
     position: fixed;
     bottom: 0;
-    width: 50%;
+    width: 100%;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
     .add-button {
@@ -55,69 +61,40 @@
         border: 0;
         border-radius: 50%;
         box-sizing: border-box;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
 }
 
-    .add-button .line {
-        background-color: #333;
-        border-radius: 2px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+            .add-button:hover {
+                background-color: #adacac;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+                transform: translateY(-2px);
+            }
 
-    .add-button .horizontal {
-        width: 24px;
-        height: 4px;
-    }
+            .add-button:active {
+                transform: translateY(0px) scale(0.95);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
 
-    .add-button .vertical {
-        width: 4px;
-        height: 24px;
-    }
+        .add-button .line {
+            background-color: #333;
+            border-radius: 2px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-.post-container {
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    
-}
-    
-    .post {
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .username {
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-weight:600;
-        color: #555555;
-        text-align: left;
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 5px;
-        
-    }   
-    .content {
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        padding: 15px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        width: 100%;
-    }
+            .add-button .horizontal {
+                width: 24px;
+                height: 4px;
+            }
 
-    .mention {
-        color: #3fa0f5;
-        font-weight: bold;
-    }
+            .add-button .vertical {
+                width: 4px;
+                height: 24px;
+            }
+
 
 
 
