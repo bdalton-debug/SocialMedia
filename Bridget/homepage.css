@@ -22,8 +22,11 @@
         flex-direction: row;
         align-items: center;
         margin-bottom: 5px;
+        cursor: pointer;
         
     }   
+        .username:hover {color:#3780c0;}
+
     .content {
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         background-color: #ffffff;
@@ -33,9 +36,23 @@
         padding: 15px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         width: 100%;
+        position:relative
     }
+
+        .like-button {
+            position: absolute;
+            bottom: 10px;
+            right: 25px;
+            cursor: pointer;
+        }
+
+        .like-button:hover {transform:scale(1.2)}
 
     .mention {
         color: #3fa0f5;
         font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
     }
+
+        .mention:hover {color:#3780c0;}
