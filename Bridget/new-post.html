@@ -26,10 +26,9 @@
     <div class = container>
         <h1>New Post</h1>
         <textarea class="textbox" placeholder="What's up?"></textarea>
-        <div class = button-container>
-            <button class = saveButton disabled>Save</button>
-            <a href="homepage.html"> <button class = sendButton disabled>Send</button>
-            </a>
+        <div class="button-container">
+            <button class="saveButton" disabled>Save</button>
+            <button class="sendButton" disabled>Send</button>
         </div>
     </div>
 
@@ -55,7 +54,7 @@
         var posts = JSON.parse(localStorage.getItem("posts")) || [];
 
         posts.unshift({
-            id: "post-",
+            id: "post-" + Date.now(),
             username: "You",
             content: text,
             likes: 0
