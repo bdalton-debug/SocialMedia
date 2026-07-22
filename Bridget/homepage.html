@@ -23,7 +23,7 @@
     </div>
     
     <div class="post-container">
-        <div class="post">
+        <div class="post" id="p5">
             <div class="username"> <img src="../images/pink-pfp.png" alt="pink pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">j.cashmoney</div>
                 <div class="content">
                 <p>hangin' with my pal <a href= "../Sam/user-profile.html" class="mention">@bob_dylan41</a> :P</p>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-        <div class="post">
+        <div class="post" id="p4">
             <div class="username"> <img src="../images/aqua-pfp.png" alt="aqua pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">user749365892</div>
                 <div class="content">
                     <p>Hello World!</p>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-        <div class="post">
+        <div class="post" id="p3">
             <div class="username"> <img src="../images/pink-pfp.png" alt="pink pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">j.cashmoney</div>
                 <div class="content">
                     <p>i love songs about horses, railroads, land, judgment day, family, hard times, whiskey, courtship, marriage, adultery, separation, murder, war, prison, rambling, damnation, home, salvation, death, pride, humor, piety, rebellion, patriotism, larceny, determination, tragedy, rowdiness, heartbreak and love. and mother. and god.</p>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-        <div class="post">
+        <div class="post" id="p2">
             <div class="username"> <img src="../images/purple-pfp.png" alt="purple pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">dog_lover11</div>
                 <div class="content">
                     <p>guys does anyone know when the homework is due??</p>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-        <div class="post">
+        <div class="post" id="p1">
             <div class="username"> <img src="../images/blue-pfp.png" alt="blue pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">gordonramsyofficial</div>
                 <div class="content">
                     <p>Having a snack</p>
@@ -114,18 +114,39 @@
 
 <script>
     var likeButtons = document.querySelectorAll(".likeButton");
-    
+
     likeButtons.forEach((button) => {
+        var post = button.closest(".post");
+        var postId = post.id;
+        var counter = post.querySelector(".counter");
+
+        // restore saved state on page load
+        var saved = JSON.parse(localStorage.getItem(postId));
+        if (saved) {
+            counter.innerHTML = saved.count;
+            if (saved.liked) {
+                button.classList.add("liked");
+            }
+        }
+
         button.addEventListener("click", () => {
-            var counter = button.closest(".content").querySelector(".counter");
             let currentCount = Number(counter.innerHTML);
-            if (button.classList.contains("liked")) {
+            let liked = button.classList.contains("liked");
+
+            if (liked) {
                 button.classList.remove("liked");
-                counter.innerHTML = currentCount - 1;}
-            else {button.classList.add("liked");
-                counter.innerHTML = currentCount + 1;}
+                currentCount -= 1;
+            } else {
+                button.classList.add("liked");
+                currentCount += 1;
+            }
 
-            });
+            counter.innerHTML = currentCount;
+
+            localStorage.setItem(postId, JSON.stringify({
+                liked: !liked,
+                count: currentCount
+            }));
         });
-
+    });
 </script>
