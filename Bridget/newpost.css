@@ -53,6 +53,7 @@ h1 {
 
         .saveButton:hover {transform:scale(1.02);filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));}
         .saveButton:active {transform:scale(0.95);}
+        .saveButton:disabled {background-color: #adadad; cursor:not-allowed;}
 
     .sendButton {
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -73,3 +74,4 @@ h1 {
 
         .sendButton:hover {transform:scale(1.02);filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));}
         .sendButton:active {transform:scale(0.95);}
+        .sendButton:disabled {background-color: #838383; cursor:not-allowed;}

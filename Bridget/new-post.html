@@ -27,11 +27,47 @@
         <h1>New Post</h1>
         <textarea class="textbox" placeholder="What's up?"></textarea>
         <div class = button-container>
-            <div class = saveButton>Save</div>
-            <a href="homepage.html"> <div class = sendButton>Send</div>
+            <button class = saveButton disabled>Save</button>
+            <a href="homepage.html"> <button class = sendButton disabled>Send</button>
             </a>
         </div>
     </div>
+
+<script>
+    var textContent = document.querySelector(".textbox");
+    var sendButton = document.querySelector(".sendButton");
+    var saveButton = document.querySelector(".saveButton");
+
+    
+
+    sendButton.disabled = true;
+    saveButton.disabled = true;
+
+    textContent.addEventListener("input", function(){
+        sendButton.disabled = textContent.value.trim() === "";
+        saveButton.disabled = textContent.value.trim() === "";
+    })
+
+    sendButton.addEventListener("click", function(){
+    if (!sendButton.disabled) {
+        var text = textContent.value.trim();
+
+        var posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+        posts.unshift({
+            id: "post-",
+            username: "You",
+            content: text,
+            likes: 0
+        });
+
+        localStorage.setItem("posts", JSON.stringify(posts));
+
+        window.location.href = "homepage.html";
+    }
+})
+
+</script>
 
 </body>
 </html>
