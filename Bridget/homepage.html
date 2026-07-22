@@ -119,9 +119,8 @@
         var post = button.closest(".post");
         var postId = post.id;
         var counter = post.querySelector(".counter");
-
-        // restore saved state on page load
         var saved = JSON.parse(localStorage.getItem(postId));
+        
         if (saved) {
             counter.innerHTML = saved.count;
             if (saved.liked) {
