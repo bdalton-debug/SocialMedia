@@ -66,7 +66,7 @@
             <div class="username"> <img src="../images/blue-pfp.png" alt="blue pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">gordonramsyofficial</div>
                 <div class="content">
                     <p>Having a snack</p>
-                    <span class = "counter">98,937</span>
+                    <span class = "counter">98937</span>
                     <div class = "likebutton">
                     <button type = "button" class = "likeButton"> <img src="../images/heart-svgrepo-com.svg" style="width:23px; height:23px;"> </button>
                     </div>
@@ -84,9 +84,19 @@
 </html>
 
 <script>
-    const likeButton = document.querySelector("likeButton")
-    const counter = document.getElementById("counter")
+    const likeButtons = document.querySelectorAll(".likeButton");
+    
+    likeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const counter = button.closest(".content").querySelector(".counter");
+            let currentCount = Number(counter.innerHTML);
+            if (button.classList.contains("liked")) {
+                button.classList.remove("Liked")
+                counter.innerHTML = currentCount - 1;}
+            else {button.classList.add("Liked")
+                counter.innerHTML = currentCount + 1;}
 
-    button.addEventListener("click", () => {Number(counter.innerHTML) +1})
+            });
+        });
 
 </script>
