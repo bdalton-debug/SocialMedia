@@ -9,11 +9,11 @@
 </head>
 <body>
     <div class="navbar">
-        <button class="hamburger" id="hamburger-btn">
+        <div class="hamburger" id="hamburger-btn">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
-        </button>
+        </div>
         <div>
             <a href="homepage.html"> <img src="../images/logoipsum-custom-logo.svg" alt="logo"></a>
         </div>
@@ -22,38 +22,56 @@
         </div>
     </div>
     <div class="post-container">
-        <post class="post">
-            <user class="username"> <img src="../images/pink-pfp.png" alt="pink pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">j.cashmoney</user>
-                <content class="content">
+        <div class="post">
+            <div class="username"> <img src="../images/pink-pfp.png" alt="pink pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">j.cashmoney</div>
+                <div class="content">
                     <p>hangin' with my pal <a href= "../Sam/user-profile.html" class="mention">@bob_dylan41</a> :P</p>
-                    <div class="like-button"> <img src="../images/heart-svgrepo-com.svg" style=" width: 25px; height:25px"></div>
-                </content>
-        </post>
-        <post class="post">
-            <user class="username"> <img src="../images/aqua-pfp.png" alt="aqua pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">user749365892</user>
-                <content class="content">
+                    <span class= "counter">27</span>
+                    <div class = "likebutton">
+                    <button type = "button" class = "likeButton"> <img src="../images/heart-svgrepo-com.svg" style="width:23px; height:23px;"> </button>
+                    </div>
+                </div>
+            </div>
+        <div class="post">
+            <div class="username"> <img src="../images/aqua-pfp.png" alt="aqua pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">user749365892</div>
+                <div class="content">
                     <p>hello world</p>
-                </content>
-        </post>
-        <post class="post">
-            <user class="username"> <img src="../images/pink-pfp.png" alt="pink pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">j.cashmoney</user>
-                <content class="content">
+                    <span class = "counter">6</span>
+                    <div class = "likebutton">
+                    <button type = "button" class = "likeButton"> <img src="../images/heart-svgrepo-com.svg" style="width:23px; height:23px;"> </button>
+                    </div>
+                </div>
+            </div>
+        <div class="post">
+            <div class="username"> <img src="../images/pink-pfp.png" alt="pink pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">j.cashmoney</div>
+                <div class="content">
                     <p>i love songs about horses, railroads, land, judgment day, family, hard times, whiskey, courtship, marriage, adultery, separation, murder, war, prison, rambling, damnation, home, salvation, death, pride, humor, piety, rebellion, patriotism, larceny, determination, tragedy, rowdiness, heartbreak and love. and mother. and god.</p>
-                </content>
-            </post>
-            <post class="post">
-            <user class="username"> <img src="../images/purple-pfp.png" alt="purple pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">dog_lover11</user>
-                <content class="content">
+                    <span class = "counter">347</span>
+                    <div class = "likebutton">
+                    <button type = "button" class = "likeButton"> <img src="../images/heart-svgrepo-com.svg" style="width:23px; height:23px;"> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="post">
+            <div class="username"> <img src="../images/purple-pfp.png" alt="purple pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">dog_lover11</div>
+                <div class="content">
                     <p>guys does anyone know when the homework is due??</p>
-                </content>
-        </post>
-        </post>
-        <post class="post">
-            <user class="username"> <img src="../images/blue-pfp.png" alt="blue pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">gordonramsyofficial</user>
-                <content class="content">
+                    <span class = "counter">89</span>
+                    <div class = "likebutton">
+                    <button type = "button" class = "likeButton"> <img src="../images/heart-svgrepo-com.svg" style="width:23px; height:23px;"> </button>
+                    </div>
+                </div>
+            </div>
+        <div class="post">
+            <div class="username"> <img src="../images/blue-pfp.png" alt="blue pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">gordonramsyofficial</div>
+                <div class="content">
                     <p>Having a snack</p>
-                </content>
-        </post>
+                    <span class = "counter">98,937</span>
+                    <div class = "likebutton">
+                    <button type = "button" class = "likeButton"> <img src="../images/heart-svgrepo-com.svg" style="width:23px; height:23px;"> </button>
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="footer">
         <button class="add-button">
@@ -64,3 +82,11 @@
 
 </body>
 </html>
+
+<script>
+    const likeButton = document.querySelector("likeButton")
+    const counter = document.getElementById("counter")
+
+    button.addEventListener("click", () => {Number(counter.innerHTML) +1})
+
+</script>
