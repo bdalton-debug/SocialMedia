@@ -113,51 +113,59 @@
 </html>
 
 <script>
-    function attachLikeListener(button) {
-        var post = button.closest(".post");
-        var postId = post.id;
-        var counter = post.querySelector(".counter");
-        var saved = JSON.parse(localStorage.getItem(postId));
+ var likeButtons = document.querySelectorAll(".likeButton");
 
-        if (saved) {
-            counter.innerHTML = saved.count;
-            if (saved.liked) {
-                button.classList.add("liked");
-            }
+likeButtons.forEach((button) => {
+
+    var post = button.closest(".post");
+    var postId = post.id; 
+    var counter = post.querySelector(".counter");
+    var savedData = JSON.parse(localStorage.getItem(postId));
+
+    if (savedData) {
+        counter.innerHTML = savedData.count;
+        if (savedData.liked) {
+            button.classList.add("liked");
+        }
+    }
+    button.addEventListener("click", () => {
+        let currentCount = Number(counter.innerHTML);
+        let isCurrentlyLiked = button.classList.contains("liked");
+
+        if (isCurrentlyLiked) {
+            button.classList.remove("liked");
+            currentCount -= 1;
+        } else {
+            button.classList.add("liked");
+            currentCount += 1;
         }
 
-        button.addEventListener("click", () => {
-            let currentCount = Number(counter.innerHTML);
-            let liked = button.classList.contains("liked");
+        counter.innerHTML = currentCount;
+        localStorage.setItem(postId, JSON.stringify({
+            liked: !isCurrentlyLiked,
+            count: currentCount
+        }));
+    });
+});
 
-            if (liked) {
-                button.classList.remove("liked");
-                currentCount -= 1;
-            } else {
-                button.classList.add("liked");
-                currentCount += 1;
-            }
-
-            counter.innerHTML = currentCount;
-
-            localStorage.setItem(postId, JSON.stringify({
-                liked: !liked,
-                count: currentCount
-            }));
-        });
-    }
 
 var savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
 var postContainer = document.querySelector(".post-container");
-var firstHardcodedPost = postContainer.firstElementChild; // reference before any insertions
+var firstHardcodedPost = postContainer.firstElementChild; 
 
 savedPosts.forEach(function(post){
     var postDiv = document.createElement("div");
     postDiv.className = "post";
     postDiv.id = post.id;
     postDiv.innerHTML = `
-        <div class="username">${post.username}</div>
+        <div class="username">
+            ${post.username}
+        </div>
         <div class="content">
+            <button type="button" class="deleteButton">
+                <div class="line aigu"></div>
+                <div class="line grave"></div>
+            </button>
             <p>${post.content}</p>
             <div class="like-container">
                 <span class="counter">${post.likes}</span>
@@ -170,9 +178,18 @@ savedPosts.forEach(function(post){
             </div>
         </div>
     `;
+    var deleteBtn = postDiv.querySelector(".deleteButton");
+    deleteBtn.addEventListener("click", function() {
+        postDiv.remove(); 
+
+        var currentPosts = JSON.parse(localStorage.getItem("posts")) || [];
+        var updatedPosts = currentPosts.filter(function(item) {
+            return item.id !== post.id;
+        });
+
+        localStorage.setItem("posts", JSON.stringify(updatedPosts));
+    });
+
     postContainer.insertBefore(postDiv, firstHardcodedPost);
 });
-
-    var likeButtons = document.querySelectorAll(".likeButton");
-    likeButtons.forEach(attachLikeListener);
 </script>

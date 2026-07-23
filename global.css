@@ -175,6 +175,36 @@ body {
                 .likeButton:active {transform:scale(.95)}
                 .likeButton.liked img {color: rgb(249, 18, 91)}
 
+        .deleteButton {
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            padding-top: 10px;
+            padding-right: 38.5px;
+            float:right;
+            position:relative;
+    }
+            .deleteButton:hover {transform: scale(1.1); filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));}
+            .deleteButton:active {transform: scale(0.95);}
+
+        .deleteButton .line {
+            width: 14px;
+            height: 2px;
+            background-color: #333;
+            position: absolute;
+        }
+            .deleteButton .line.aigu {
+                transform: rotate(45deg);
+            }
+
+            .deleteButton .line.grave {
+                transform: rotate(-45deg);
+            }
+        
+        
         .mention {
             color: #3fa0f5;
             font-weight: bold;
@@ -183,7 +213,6 @@ body {
         }
 
             .mention:hover {color:#3780c0;}
-
 
 
     *, *::before, *::after {

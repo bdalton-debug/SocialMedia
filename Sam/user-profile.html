@@ -36,7 +36,7 @@
 <div class="post-container">
     <div class="post">
         <div class="username"> <img src="../images/green-pfp.png" alt="green pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">bob_dylan41</div>
-        <div class="content">
+        <div class="content" id="profile-p1">
             <p> hangin' with my pal @j.cashmoney :P</p>
             <div class="like-container">
                 <span class="counter">14</span>
@@ -86,6 +86,12 @@
         }
     });
 
+    var isFollowing = localStorage.getItem("followingBob") === "true";
+    if (isFollowing) {
+        followButton.classList.add("following");
+        followButton.textContent = "Following";
+        followerCount.innerHTML = Number(followerCount.innerHTML) + 1;
+}
 </script>
 
 </body>
