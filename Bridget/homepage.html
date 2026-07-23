@@ -113,7 +113,7 @@
 </html>
 
 <script>
- var likeButtons = document.querySelectorAll(".likeButton");
+var likeButtons = document.querySelectorAll(".likeButton");
 
 likeButtons.forEach((button) => {
 
@@ -159,7 +159,7 @@ savedPosts.forEach(function(post){
     postDiv.id = post.id;
     postDiv.innerHTML = `
         <div class="username">
-            ${post.username}
+            <img src="../images/sky-pfp.png" alt="sky pfp icon" style="width: 30px; height: 30px; margin-right: 10px;">You</div>
         </div>
         <div class="content">
             <button type="button" class="deleteButton">
@@ -169,12 +169,7 @@ savedPosts.forEach(function(post){
             <p>${post.content}</p>
             <div class="like-container">
                 <span class="counter">${post.likes}</span>
-                <button type="button" class="likeButton">
-                    <svg class="heart-icon" viewBox="0 0 24 24" width="23" height="23" xmlns="http://www.w3.org/2000/svg">
-                        <path class="heart-main" fill-rule="evenodd" clip-rule="evenodd" d="M2.87187 11.5983C1.79887 8.24832 3.05287 4.41932 6.56987 3.28632C8.41987 2.68932 10.4619 3.04132 11.9999 4.19832C13.4549 3.07332 15.5719 2.69332 17.4199 3.28632C20.9369 4.41932 22.1989 8.24832 21.1269 11.5983C19.4569 16.9083 11.9999 20.9983 11.9999 20.9983C11.9999 20.9983 4.59787 16.9703 2.87187 11.5983Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path class="heart-shine" opacity="0.4" d="M16 6.69995C17.07 7.04595 17.826 8.00095 17.917 9.12195" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+                <h4>Likes</h4>
             </div>
         </div>
     `;
@@ -182,14 +177,16 @@ savedPosts.forEach(function(post){
     deleteBtn.addEventListener("click", function() {
         postDiv.remove(); 
 
-        var currentPosts = JSON.parse(localStorage.getItem("posts")) || [];
-        var updatedPosts = currentPosts.filter(function(item) {
-            return item.id !== post.id;
+            var currentPosts = JSON.parse(localStorage.getItem("posts")) || [];
+            var updatedPosts = currentPosts.filter(function(item) {
+                return item.id !== post.id;
+            });
+
+            localStorage.setItem("posts", JSON.stringify(updatedPosts));
         });
 
-        localStorage.setItem("posts", JSON.stringify(updatedPosts));
-    });
-
     postContainer.insertBefore(postDiv, firstHardcodedPost);
-});
+
+    
+    });
 </script>
